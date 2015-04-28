@@ -1,0 +1,23 @@
+The teacher wants
+a programmer
+to talk to year 12 and 13 students
+
+1. talk about their job in particular
+
+2. showcase career opportunities
+
+	Programmers
+	Front end
+	Back end
+	Support
+	Software Testers
+	User Experience Designers
+	Team Leads, Business Analysists, Project Managers
+
+3. particularly the challenges a particular project faces and any sustainability issues they have to address while developing a project.
+
+Sustainability 
+
+- labour to create a product (eg outsourcing)
+- maintenance of software
+- software lifetime before it becomes redundant
