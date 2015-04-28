@@ -44,7 +44,7 @@
 					<h1>Simple Questions</h1>
 					<h3>(from a software career)</h3>
 					<p>
-						<small>A talk by <a href="http://mgatland.com">Matthew Gatland</a> / <a href="http://twitter.com/mgatland">@mgatland</a></small>
+						<small>A talk by <a href="http://mgatland.com">Matthew Gatland</a> / <a href="http://twitter.com/mgatland">@mgatland</a> <span class="peerid">…</span></small>
 					</p>
 				</section>
 
@@ -311,11 +311,38 @@
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/remotes/remotes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true }
+					//{ src: 'plugin/remotes/remotes.js', async: true }
 				]
 			});
 
+		</script>
+		<!-- Matthew's remote control attempt-->
+		<style>
+		.peerid { color: grey;}
+		</style>
+		<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+		<script>
+			var peerTag = document.querySelector(".peerid");
+			var startPeer = function () {
+				//host
+				var id = "s" + Math.floor(Math.random()*1000);
+				var peer = new Peer(id, {key: 'g9eb986tyyqr529'});
+				peerTag.innerHTML = "//"+ id;
+				peer.on('connection', function(conn) {
+					console.log("Connected");
+					conn.on('data', function (data) {
+						console.log(data);
+						if (data === "fwd") {
+							Reveal.right();
+						}
+						if (data === "back") {
+							Reveal.left();
+						}
+					});
+	        	});
+			}
+			peerTag.addEventListener('click', startPeer);
 		</script>
 
 	</body>

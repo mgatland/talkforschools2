@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<style>
+		h1 {
+			width: 80%;
+			height: 70%;
+			display: block;
+			background-color: grey;
+		}
+		.back {
+			height: 20%;
+			background-color: blue;
+		}
+		</style>
+	</head>
+	<body>
+		<h1 class="forward">FORWARD</h1>
+		<h1 class="back">BACK</h1>
+		<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+		<script>
+			//host
+			var id = "s" + Math.floor(Math.random()*1000);
+			var targetId = window.prompt("enter presentation id","s");
+			var peer = new Peer(id, {key: 'g9eb986tyyqr529'});
+			var conn = peer.connect(targetId);
+			conn.on('open', function() {
+				alert("Ready!");
+
+				var fwd = document.querySelector(".forward");
+				fwd.addEventListener('click', function() {
+					conn.send("fwd");
+				});
+
+				var back = document.querySelector(".back");
+				back.addEventListener('click', function() {
+					conn.send("back");
+				});
+			});
+		</script>
+	</body>
+</html>
